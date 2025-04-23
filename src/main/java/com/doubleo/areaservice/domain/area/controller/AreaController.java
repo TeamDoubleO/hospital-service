@@ -35,13 +35,13 @@ public class AreaController {
 
     @Operation(summary = "Get All Areas", description = "모든 구역을 조회하는 API")
     @GetMapping
-    public ResponseEntity<List<?>> findAllAreas() {
+    public ResponseEntity<List<AreaInfoResponse>> findAllAreas() {
         return ResponseEntity.ok(areaService.findAllAreas());
     }
 
     @Operation(summary = "Get Area by ID", description = "ID로 구역을 조회하는 API")
     @GetMapping("/{id}")
-    public ResponseEntity<?> findAreaById(@PathVariable Long id) {
+    public ResponseEntity<AreaInfoResponse> findAreaById(@PathVariable Long id) {
         return ResponseEntity.ok(areaService.findAreaById(id));
     }
 
