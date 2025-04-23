@@ -27,7 +27,7 @@ public class AreaController {
     }
 
     @Operation(summary = "Create Area API", description = "새로운 영역을 생성하기 위한 API")
-    @PostMapping("/area")
+    @PostMapping
     public ResponseEntity<Void> createArea(@RequestBody AreaCreateRequest request) {
         areaService.createArea(request);
         return ResponseEntity.ok().build();
