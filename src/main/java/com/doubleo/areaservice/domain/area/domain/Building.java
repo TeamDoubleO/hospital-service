@@ -15,7 +15,7 @@ public class Building extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "building_id")
-    private Long buildingId;
+    private Long id;
 
     @Column(name = "building_name")
     private String buildingName;

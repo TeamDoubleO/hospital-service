@@ -4,6 +4,8 @@ import com.doubleo.areaservice.domain.common.model.BaseTimeEntity;
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -33,4 +35,15 @@ public class Area extends BaseTimeEntity {
             orphanRemoval = true,
             fetch = FetchType.LAZY)
     private List<EnterStatus> enterStatuses = new ArrayList<>();
+
+    @Builder(access = AccessLevel.PRIVATE)
+    private Area(String areaName, Building building, AreaCategory category) {
+        this.areaName = areaName;
+        this.building = building;
+        this.category = category;
+    }
+
+    public static Area createArea(String areaName, Building building, AreaCategory category) {
+        return new Area(areaName, building, category);
+    }
 }

@@ -11,7 +11,7 @@ public class BuildingInfoResponse {
 
     public static BuildingInfoResponse from(Building building) {
         BuildingInfoResponse response = new BuildingInfoResponse();
-        response.buildingId = building.getBuildingId();
+        response.buildingId = building.getId();
         response.buildingName = building.getBuildingName();
         return response;
     }
