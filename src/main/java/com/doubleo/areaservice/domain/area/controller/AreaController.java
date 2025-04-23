@@ -16,7 +16,7 @@ public class AreaController {
 
     private final BuildingService buildingService;
 
-    @Operation(summary = "All Buildings Group get API", description = "모든 빌딩을 조회하기 위한 API")
+    @Operation(summary = "All Buildings get API", description = "모든 빌딩을 조회하기 위한 API")
     @GetMapping("/buildings")
     public List<BuildingInfoResponse> findAllBuilding() {
         return buildingService.findAllBuilding();
