@@ -46,4 +46,16 @@ public class Area extends BaseTimeEntity {
     public static Area createArea(String areaName, Building building, AreaCategory category) {
         return new Area(areaName, building, category);
     }
+
+    public void updateName(String newName) {
+        this.areaName = newName;
+    }
+
+    public void updateBuilding(Building newBuilding) {
+        this.building = newBuilding;
+    }
+
+    public void updateCategory(AreaCategory newCategory) {
+        this.category = newCategory;
+    }
 }

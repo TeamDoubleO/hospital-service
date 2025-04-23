@@ -1,6 +1,8 @@
 package com.doubleo.areaservice.domain.area.controller;
 
 import com.doubleo.areaservice.domain.area.dto.request.AreaCreateRequest;
+import com.doubleo.areaservice.domain.area.dto.request.AreaUpdateRequest;
+import com.doubleo.areaservice.domain.area.dto.response.AreaInfoResponse;
 import com.doubleo.areaservice.domain.area.dto.response.BuildingInfoResponse;
 import com.doubleo.areaservice.domain.area.service.AreaService;
 import com.doubleo.areaservice.domain.area.service.BuildingService;
@@ -29,5 +31,39 @@ public class AreaController {
     public ResponseEntity<Void> createArea(@RequestBody AreaCreateRequest request) {
         areaService.createArea(request);
         return ResponseEntity.ok().build();
+    }
+
+    @Operation(summary = "Get All Areas", description = "모든 구역을 조회하는 API")
+    @GetMapping
+    public ResponseEntity<List<?>> findAllAreas() {
+        return ResponseEntity.ok(areaService.findAllAreas());
+    }
+
+    @Operation(summary = "Get Area by ID", description = "ID로 구역을 조회하는 API")
+    @GetMapping("/{id}")
+    public ResponseEntity<?> findAreaById(@PathVariable Long id) {
+        return ResponseEntity.ok(areaService.findAreaById(id));
+    }
+
+    @Operation(summary = "Delete Area by ID", description = "ID로 구역을 삭제하는 API")
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteArea(@PathVariable Long id) {
+        areaService.deleteAreaById(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @Operation(summary = "Update Area", description = "구역 정보를 수정하는 API")
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> updateArea(
+            @PathVariable Long id, @RequestBody AreaUpdateRequest request) {
+        areaService.updateArea(id, request);
+        return ResponseEntity.ok().build();
+    }
+
+    @Operation(summary = "Get Areas by Building ID", description = "건물 ID로 구역 리스트를 조회하는 API")
+    @GetMapping("/building/{buildingId}")
+    public ResponseEntity<List<AreaInfoResponse>> findAreasByBuildingId(
+            @PathVariable Long buildingId) {
+        return ResponseEntity.ok(areaService.findAreasByBuildingId(buildingId));
     }
 }
