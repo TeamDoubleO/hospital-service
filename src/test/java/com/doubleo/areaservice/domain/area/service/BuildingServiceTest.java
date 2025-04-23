@@ -29,7 +29,7 @@ public class BuildingServiceTest {
     void setUp() throws NoSuchFieldException, IllegalAccessException {
         building1 = new Building();
 
-        Field buildingIdField = Building.class.getDeclaredField("buildingId");
+        Field buildingIdField = Building.class.getDeclaredField("id");
         buildingIdField.setAccessible(true);
         buildingIdField.set(building1, 1L);
 
@@ -38,7 +38,7 @@ public class BuildingServiceTest {
         buildingNameField.set(building1, "Building A");
 
         building2 = new Building();
-        Field buildingIdField2 = Building.class.getDeclaredField("buildingId");
+        Field buildingIdField2 = Building.class.getDeclaredField("id");
         buildingIdField2.setAccessible(true);
         buildingIdField2.set(building2, 2L);
 
