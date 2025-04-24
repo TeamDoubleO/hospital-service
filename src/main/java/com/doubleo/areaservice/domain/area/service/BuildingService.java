@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class BuildingService {
     private final BuildingRepository buildingRepository;
 
-    public List<BuildingInfoResponse> findAllBuilding() {
+    public List<BuildingInfoResponse> getAllBuilding() {
         return buildingRepository.findAll().stream().map(BuildingInfoResponse::from).toList();
     }
 }
