@@ -35,14 +35,14 @@ public class AreaService {
     }
 
     // 모든 구역 조회
-    public List<AreaInfoResponse> findAllAreas() {
+    public List<AreaInfoResponse> getAllAreas() {
         return areaRepository.findAll().stream()
                 .map(AreaInfoResponse::from)
                 .collect(Collectors.toList());
     }
 
     // 구역 상세 조회
-    public AreaInfoResponse findAreaById(Long id) {
+    public AreaInfoResponse getAreaById(Long id) {
         Area area =
                 areaRepository
                         .findById(id)
@@ -51,7 +51,7 @@ public class AreaService {
     }
 
     // 구역 삭제
-    public void deleteAreaById(Long id) {
+    public void deleteArea(Long id) {
         final Area area =
                 areaRepository
                         .findById(id)
@@ -81,7 +81,7 @@ public class AreaService {
     }
 
     // 건물 id 에 해당하는 구역 리스트 조회
-    public List<AreaInfoResponse> findAreasByBuildingId(Long buildingId) {
+    public List<AreaInfoResponse> getAreasByBuildingId(Long buildingId) {
         Building building =
                 buildingRepository
                         .findById(buildingId)
