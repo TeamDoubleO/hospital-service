@@ -13,7 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/area")
+@RequestMapping("/areas")
 @RequiredArgsConstructor
 public class AreaController {
 
@@ -28,33 +28,33 @@ public class AreaController {
 
     @Operation(summary = "Create Area API", description = "새로운 영역을 생성하기 위한 API")
     @PostMapping
-    public ResponseEntity<Void> createArea(@RequestBody AreaCreateRequest request) {
+    public ResponseEntity<Void> areaCreate(@RequestBody AreaCreateRequest request) {
         areaService.createArea(request);
         return ResponseEntity.ok().build();
     }
 
     @Operation(summary = "Get All Areas", description = "모든 구역을 조회하는 API")
     @GetMapping
-    public ResponseEntity<List<AreaInfoResponse>> findAllAreas() {
+    public ResponseEntity<List<AreaInfoResponse>> areaListGet() {
         return ResponseEntity.ok(areaService.findAllAreas());
     }
 
     @Operation(summary = "Get Area by ID", description = "ID로 구역을 조회하는 API")
     @GetMapping("/{id}")
-    public ResponseEntity<AreaInfoResponse> findAreaById(@PathVariable Long id) {
+    public ResponseEntity<AreaInfoResponse> oneAreaGet(@PathVariable Long id) {
         return ResponseEntity.ok(areaService.findAreaById(id));
     }
 
     @Operation(summary = "Delete Area by ID", description = "ID로 구역을 삭제하는 API")
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteArea(@PathVariable Long id) {
+    public ResponseEntity<Void> areaDelete(@PathVariable Long id) {
         areaService.deleteAreaById(id);
         return ResponseEntity.noContent().build();
     }
 
     @Operation(summary = "Update Area", description = "구역 정보를 수정하는 API")
     @PutMapping("/{id}")
-    public ResponseEntity<Void> updateArea(
+    public ResponseEntity<Void> areaUpdate(
             @PathVariable Long id, @RequestBody AreaUpdateRequest request) {
         areaService.updateArea(id, request);
         return ResponseEntity.ok().build();
@@ -62,7 +62,7 @@ public class AreaController {
 
     @Operation(summary = "Get Areas by Building ID", description = "건물 ID로 구역 리스트를 조회하는 API")
     @GetMapping("/building/{buildingId}")
-    public ResponseEntity<List<AreaInfoResponse>> findAreasByBuildingId(
+    public ResponseEntity<List<AreaInfoResponse>> buildingAreasListGet(
             @PathVariable Long buildingId) {
         return ResponseEntity.ok(areaService.findAreasByBuildingId(buildingId));
     }
