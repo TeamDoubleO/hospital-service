@@ -29,13 +29,13 @@ public class AreaService {
                         .findById(request.buildingId())
                         .orElseThrow(() -> new RuntimeException("Building not found"));
 
-        AreaCategory category = AreaCategory.valueOf(request.category().toUpperCase());
+        AreaCategory category = request.category();
 
         areaRepository.save(Area.createArea(request.areaName(), building, category));
     }
 
     // 모든 구역 조회
-    public List<AreaInfoResponse> getAllAreas() {
+    public List<AreaInfoResponse> getAllAreaList() {
         return areaRepository.findAll().stream()
                 .map(AreaInfoResponse::from)
                 .collect(Collectors.toList());
@@ -71,17 +71,15 @@ public class AreaService {
                         .findById(request.buildingId())
                         .orElseThrow(() -> new RuntimeException("Building not found"));
 
-        AreaCategory category = AreaCategory.valueOf(request.category().toUpperCase());
-
         area.updateName(request.name());
         area.updateBuilding(newBuilding);
-        area.updateCategory(category);
+        area.updateCategory(request.category());
 
         areaRepository.save(area);
     }
 
     // 건물 id 에 해당하는 구역 리스트 조회
-    public List<AreaInfoResponse> getAreasByBuildingId(Long buildingId) {
+    public List<AreaInfoResponse> getAreaListByBuildingId(Long buildingId) {
         Building building =
                 buildingRepository
                         .findById(buildingId)

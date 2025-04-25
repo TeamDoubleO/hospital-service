@@ -22,7 +22,7 @@ public class AreaController {
 
     @Operation(summary = "All Buildings get API", description = "모든 빌딩을 조회하기 위한 API")
     @GetMapping("/buildings")
-    public List<BuildingInfoResponse> findAllBuilding() {
+    public List<BuildingInfoResponse> buildingListGet() {
         return buildingService.getAllBuilding();
     }
 
@@ -36,13 +36,13 @@ public class AreaController {
     @Operation(summary = "Get All Areas", description = "모든 구역을 조회하는 API")
     @GetMapping
     public ResponseEntity<List<AreaInfoResponse>> areaListGet() {
-        return ResponseEntity.ok(areaService.getAllAreas());
+        return ResponseEntity.ok(areaService.getAllAreaList());
     }
 
     @Operation(summary = "Get Area by ID", description = "ID로 구역을 조회하는 API")
-    @GetMapping("/{id}")
-    public ResponseEntity<AreaInfoResponse> oneAreaGet(@PathVariable Long id) {
-        return ResponseEntity.ok(areaService.getAreaById(id));
+    @GetMapping("/{areaId}")
+    public ResponseEntity<AreaInfoResponse> oneAreaGet(@PathVariable Long areaId) {
+        return ResponseEntity.ok(areaService.getAreaById(areaId));
     }
 
     @Operation(summary = "Delete Area by ID", description = "ID로 구역을 삭제하는 API")
@@ -62,8 +62,8 @@ public class AreaController {
 
     @Operation(summary = "Get Areas by Building ID", description = "건물 ID로 구역 리스트를 조회하는 API")
     @GetMapping("/building/{buildingId}")
-    public ResponseEntity<List<AreaInfoResponse>> buildingAreasListGet(
+    public ResponseEntity<List<AreaInfoResponse>> buildingAreaListGet(
             @PathVariable Long buildingId) {
-        return ResponseEntity.ok(areaService.getAreasByBuildingId(buildingId));
+        return ResponseEntity.ok(areaService.getAreaListByBuildingId(buildingId));
     }
 }
