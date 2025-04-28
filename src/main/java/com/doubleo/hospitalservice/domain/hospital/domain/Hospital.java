@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
         name = "hospital",
         uniqueConstraints = {
             @UniqueConstraint(
-                    name = "UniqueTenentId",
-                    columnNames = {"tenentId"})
+                    name = "UniqueTenantId",
+                    columnNames = {"tenantId"})
         })
 public class Hospital extends BaseTimeEntity {
     @Id
@@ -21,8 +21,8 @@ public class Hospital extends BaseTimeEntity {
     @Column(name = "hospital_id")
     private Long id;
 
-    @Column(name = "tenent_id", unique = true, nullable = false)
-    private Long tenentId;
+    @Column(name = "tenant_id", unique = true, nullable = false)
+    private Long tenantId;
 
     @Column(name = "hospital_name", nullable = false)
     private String hospitalName;
