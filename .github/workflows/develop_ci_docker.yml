@@ -38,4 +38,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: sunwoo11/keywe_area_service:latest
+          tags: sunwoo11/keywe_hospital_service:latest
