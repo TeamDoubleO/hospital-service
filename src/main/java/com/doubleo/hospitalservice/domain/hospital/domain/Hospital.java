@@ -9,5 +9,17 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class Hospital extends BaseTimeEntity {
-    @Id private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "hospital_id")
+    private Long id;
+
+    @Column(name = "tenent_id")
+    private Long tenentId;
+
+    @Column(name = "hospital_name")
+    private String hospitalName;
+
+    @Column(name = "hospital_policy")
+    private String hospitalPolicy;
 }
