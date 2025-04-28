@@ -9,7 +9,7 @@ permissions:
   packages: write
 
 env:
-  DOCKER_IMAGE_NAME: sunwoo11/area-service
+  DOCKER_IMAGE_NAME: sunwoo11/hospital-service
   DOCKER_TAG: latest
 
 jobs:
