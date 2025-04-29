@@ -20,7 +20,7 @@ public class HospitalController {
 
     @GetMapping
     @Operation(summary = "All Hospitals get API", description = "모든 병원을 조회하기 위한 API")
-    public List<HospitalInfoListDto> hospitalsGetAll() {
+    public List<HospitalInfoListDto> hospitalListGetAll() {
         return hospitalService.getAllHospitals();
     }
 
