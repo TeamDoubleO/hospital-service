@@ -8,7 +8,13 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor
-@Table(name = "department")
+@Table(
+        name = "department",
+        uniqueConstraints = {
+            @UniqueConstraint(
+                    name = "UniqueTenantId",
+                    columnNames = {"tenant_id", "department_id"})
+        })
 public class Department extends BaseTimeEntity {
 
     @Id
@@ -19,9 +25,9 @@ public class Department extends BaseTimeEntity {
     @Column(name = "tenant_id", nullable = false)
     private Long tenantId;
 
-    @Column(nullable = false)
+    @Column(name = "department_name", nullable = false)
     private String departmentName;
 
-    @Column(nullable = false)
+    @Column(name = "department_code", nullable = false)
     private String departmentCode;
 }

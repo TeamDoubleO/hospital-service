@@ -14,7 +14,11 @@ import lombok.NoArgsConstructor;
             @UniqueConstraint(columnNames = {"tenant_id", "department_id", "area_id"})
         })
 public class DepartmentArea extends BaseTimeEntity {
-    @Id private Long id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "department_area_id")
+    private Long id;
 
     @Column(name = "tenant_id", nullable = false)
     private Long tenantId;

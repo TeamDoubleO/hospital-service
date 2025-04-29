@@ -9,24 +9,30 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor
-@Table(name = "area")
+@Table(
+        name = "area",
+        uniqueConstraints = {
+            @UniqueConstraint(
+                    name = "UniqueTenantId",
+                    columnNames = {"tenant_id", "area_id"})
+        })
 public class Area extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "area_id")
+    @Column(name = "area_id", nullable = false)
     private Long id;
 
-    @Column(name = "tenant_id")
+    @Column(name = "tenant_id", nullable = false)
     private Long tenantId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "building_id")
+    @JoinColumn(name = "building_id", nullable = false)
     private Building building;
 
-    @Column(nullable = false)
+    @Column(name = "area_name", nullable = false)
     private String areaName;
 
-    @Column(nullable = false)
+    @Column(name = "area_code", nullable = false)
     private String areaCode;
 }

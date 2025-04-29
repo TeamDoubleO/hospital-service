@@ -8,20 +8,27 @@ import lombok.Getter;
 
 @Entity
 @Getter
-@Table(name = "building")
+@Table(
+        name = "building",
+        uniqueConstraints = {
+            @UniqueConstraint(
+                    name = "UniqueTenantId",
+                    columnNames = {"tenant_id", "building_id"})
+        })
 public class Building extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "building_id")
     private Long buildingId;
 
     @Column(name = "tenant_id", nullable = false)
     private Long tenantId;
 
-    @Column(nullable = false)
+    @Column(name = "building_name", nullable = false)
     private String buildingName;
 
-    @Column(nullable = false)
+    @Column(name = "building_code", nullable = false)
     private String buildingCode;
 
     @OneToMany(mappedBy = "building", cascade = CascadeType.ALL, orphanRemoval = true)
