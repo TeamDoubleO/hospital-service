@@ -24,6 +24,6 @@ public class Building extends BaseTimeEntity {
     @Column(nullable = false)
     private String buildingCode;
 
-    @OneToMany(mappedBy = "building")
+    @OneToMany(mappedBy = "building", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Area> areas;
 }
