@@ -21,15 +21,16 @@ public class HospitalController {
 
     @GetMapping
     @Operation(summary = "All Hospitals get API", description = "모든 병원을 조회하기 위한 API")
-    public List<HospitalInfoListResponse> hospitalListGetAll() {
+    public ResponseEntity<List<HospitalInfoListResponse>> hospitalListGetAll() {
         List<HospitalInfoListResponse> hospitals = hospitalService.getAllHospitals();
-        return ResponseEntity.ok(hospitals).getBody();
+        return ResponseEntity.ok(hospitals);
     }
 
     @GetMapping(path = "/{hospitalId}")
     @Operation(summary = "Hospital Detail get API", description = "병원 상세 정보를 조회하기 위한 API")
-    public HospitalDetailInfoResponse hospitalDetailGet(@PathVariable Long hospitalId) {
+    public ResponseEntity<HospitalDetailInfoResponse> hospitalDetailGet(
+            @PathVariable Long hospitalId) {
         HospitalDetailInfoResponse hospital = hospitalService.getHospitalById(hospitalId);
-        return ResponseEntity.ok(hospital).getBody();
+        return ResponseEntity.ok(hospital);
     }
 }
