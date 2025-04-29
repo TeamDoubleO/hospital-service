@@ -1,8 +1,8 @@
 package com.doubleo.hospitalservice.domain.hospital.controller;
 
-import com.doubleo.hospitalservice.domain.hospital.dto.response.HospitalDetailInfoDto;
-import com.doubleo.hospitalservice.domain.hospital.dto.response.HospitalInfoListDto;
-import com.doubleo.hospitalservice.domain.hospital.service.HospitalService;
+import com.doubleo.hospitalservice.domain.hospital.dto.response.HospitalDetailInfoResponse;
+import com.doubleo.hospitalservice.domain.hospital.dto.response.HospitalInfoListResponse;
+import com.doubleo.hospitalservice.domain.hospital.service.HospitalServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -16,17 +16,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class HospitalController {
 
-    private final HospitalService hospitalService;
+    private final HospitalServiceImpl hospitalServiceImpl;
 
     @GetMapping
     @Operation(summary = "All Hospitals get API", description = "모든 병원을 조회하기 위한 API")
-    public List<HospitalInfoListDto> hospitalListGetAll() {
-        return hospitalService.getAllHospitals();
+    public List<HospitalInfoListResponse> hospitalListGetAll() {
+        return hospitalServiceImpl.getAllHospitals();
     }
 
     @GetMapping(path = "/{hospitalId}")
     @Operation(summary = "Hospital Detail get API", description = "병원 상세 정보를 조회하기 위한 API")
-    public HospitalDetailInfoDto hospitalDetailGet(@PathVariable Long hospitalId) {
-        return hospitalService.getHospitalById(hospitalId);
+    public HospitalDetailInfoResponse hospitalDetailGet(@PathVariable Long hospitalId) {
+        return hospitalServiceImpl.getHospitalById(hospitalId);
     }
 }
