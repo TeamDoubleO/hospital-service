@@ -1,0 +1,38 @@
+package com.doubleo.hospitalservice.domain.area.domain;
+
+import com.doubleo.hospitalservice.domain.building.domain.Building;
+import com.doubleo.hospitalservice.domain.common.model.BaseTimeEntity;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Getter
+@NoArgsConstructor
+@Table(
+        name = "area",
+        uniqueConstraints = {
+            @UniqueConstraint(
+                    name = "UniqueTenantId",
+                    columnNames = {"tenant_id", "area_id"})
+        })
+public class Area extends BaseTimeEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "area_id", nullable = false)
+    private Long id;
+
+    @Column(name = "tenant_id", nullable = false)
+    private Long tenantId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "building_id", nullable = false)
+    private Building building;
+
+    @Column(name = "area_name", nullable = false)
+    private String areaName;
+
+    @Column(name = "area_code", nullable = false)
+    private String areaCode;
+}
