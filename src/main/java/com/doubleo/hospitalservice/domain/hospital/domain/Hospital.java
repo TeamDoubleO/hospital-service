@@ -28,5 +28,5 @@ public class Hospital extends BaseTimeEntity {
     private String hospitalName;
 
     @Column(name = "hospital_policy", nullable = false)
-    private String hospitalPolicy;
+    private Long hospitalPolicy;
 }
