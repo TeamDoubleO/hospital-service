@@ -1,6 +1,5 @@
 package com.doubleo.hospitalservice.domain.hospital.service;
 
-import com.doubleo.hospitalservice.domain.hospital.domain.Hospital;
 import com.doubleo.hospitalservice.domain.hospital.repository.HospitalRepository;
 import com.doubleo.hospitalservice.global.exception.CommonException;
 import com.doubleo.hospitalservice.global.exception.errorcode.HospitalErrorCode;
@@ -17,11 +16,9 @@ public class HospitalInternalServiceImpl implements HospitalInternalService {
     @Override
     public Long getTenantIdByHospitalId(Long hospitalId) {
         // 병원 아이디 -> tenant 아이디 조회
-        Hospital hospital =
-                hospitalRepository
-                        .findById(hospitalId)
-                        .orElseThrow(
-                                () -> new CommonException(HospitalErrorCode.HOSPITAL_NOT_FOUND));
-        return hospital.getTenantId();
+        return hospitalRepository
+                .findById(hospitalId)
+                .orElseThrow(() -> new CommonException(HospitalErrorCode.HOSPITAL_NOT_FOUND))
+                .getTenantId();
     }
 }
