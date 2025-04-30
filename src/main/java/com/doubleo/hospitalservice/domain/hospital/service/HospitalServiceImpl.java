@@ -17,14 +17,8 @@ public class HospitalServiceImpl implements HospitalService {
     private final HospitalRepository hospitalRepository;
 
     public List<HospitalInfoListResponse> getAllHospitals() {
-        List<HospitalInfoListResponse> hospitalList =
-                hospitalRepository.findAll().stream().map(HospitalInfoListResponse::from).toList();
 
-        if (hospitalList.isEmpty()) {
-            throw new CommonException(HospitalErrorCode.HOSPITAL_LIST_EMPTY);
-        }
-
-        return hospitalList;
+        return hospitalRepository.findAll().stream().map(HospitalInfoListResponse::from).toList();
     }
 
     public HospitalDetailInfoResponse getHospitalById(Long id) {
