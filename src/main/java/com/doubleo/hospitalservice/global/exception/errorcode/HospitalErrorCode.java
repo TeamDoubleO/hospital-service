@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 @Getter
 @AllArgsConstructor
 public enum HospitalErrorCode implements BaseErrorCode {
-    HOSPITAL_LIST_EMPTY(HttpStatus.BAD_REQUEST, "해당 병원을 찾을 수 없습니다."),
     HOSPITAL_NOT_FOUND(HttpStatus.NOT_FOUND, "해당 ID의 병원을 찾을 수 없습니다"),
     ;
 
