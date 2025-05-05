@@ -19,3 +19,10 @@ spring:
       - datasource
       - eureka
       - actuator
+      - grpc
+
+logging:
+  level:
+    io.grpc: DEBUG
+    net.devh.boot.grpc: DEBUG
+    net.devh.boot.grpc.metrics: DEBUG
