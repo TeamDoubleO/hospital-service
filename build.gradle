@@ -66,7 +66,7 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
     // (1) hospital-interface 모듈
-    implementation "com.doubleo.grpc:hospital-interface:0.0.9"
+    implementation "com.doubleo.grpc:hospital-interface:0.1.0"
 
     // (2) gRPC 런타임
     implementation "io.grpc:grpc-netty:1.63.0"
@@ -74,7 +74,7 @@ dependencies {
     implementation "io.grpc:grpc-stub:1.63.0"
 
     // (3) Spring Boot starter for gRPC 서버/클라이언트 자동설정
-    implementation 'com.google.protobuf:protobuf-java:3.24.4'
+    implementation 'com.google.protobuf:protobuf-java:4.28.2'
     implementation 'net.devh:grpc-spring-boot-starter:3.1.0.RELEASE'
 
 }
