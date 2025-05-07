@@ -1,7 +1,7 @@
 package com.doubleo.hospitalservice.domain.building.domain;
 
 import com.doubleo.hospitalservice.domain.area.domain.Area;
-import com.doubleo.hospitalservice.domain.common.model.BaseTimeEntity;
+import com.doubleo.hospitalservice.domain.common.model.BaseEntity;
 import jakarta.persistence.*;
 import java.util.List;
 import lombok.Getter;
@@ -15,7 +15,7 @@ import lombok.Getter;
                     name = "UniqueTenantId",
                     columnNames = {"tenant_id", "building_id"})
         })
-public class Building extends BaseTimeEntity {
+public class Building extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

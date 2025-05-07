@@ -1,6 +1,6 @@
 package com.doubleo.hospitalservice.domain.department.domain;
 
-import com.doubleo.hospitalservice.domain.common.model.BaseTimeEntity;
+import com.doubleo.hospitalservice.domain.common.model.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
         uniqueConstraints = {
             @UniqueConstraint(columnNames = {"tenant_id", "department_id", "area_id"})
         })
-public class DepartmentArea extends BaseTimeEntity {
+public class DepartmentArea extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
