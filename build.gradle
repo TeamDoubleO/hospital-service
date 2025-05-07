@@ -77,6 +77,9 @@ dependencies {
     implementation 'com.google.protobuf:protobuf-java:4.28.2'
     implementation 'net.devh:grpc-spring-boot-starter:3.1.0.RELEASE'
 
+    //Tenant-Context
+    implementation 'com.doubleo:tenant-context:0.0.2'
+
 }
 
 dependencyManagement {
@@ -119,10 +122,10 @@ tasks.register('updateGitHooks', Copy) {
 }
 
 
-tasks.register('makeGitHooksExecutable', Exec) {
-    commandLine 'chmod', '+x', './.git/hooks/pre-commit', './.git/hooks/prepare-commit-msg'
-    dependsOn updateGitHooks
-}
-
-compileJava.dependsOn makeGitHooksExecutable
-
+//tasks.register('makeGitHooksExecutable', Exec) {
+//    commandLine 'chmod', '+x', './.git/hooks/pre-commit', './.git/hooks/prepare-commit-msg'
+//    dependsOn updateGitHooks
+//}
+//
+//compileJava.dependsOn makeGitHooksExecutable
+//
