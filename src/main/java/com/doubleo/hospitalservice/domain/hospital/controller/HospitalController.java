@@ -1,7 +1,6 @@
 package com.doubleo.hospitalservice.domain.hospital.controller;
 
-import com.doubleo.hospitalservice.domain.hospital.dto.response.HospitalDetailInfoResponse;
-import com.doubleo.hospitalservice.domain.hospital.dto.response.HospitalInfoListResponse;
+import com.doubleo.hospitalservice.domain.hospital.dto.response.HospitalInfoResponse;
 import com.doubleo.hospitalservice.domain.hospital.service.HospitalService;
 import io.swagger.v3.oas.annotations.Operation;
 import java.util.List;
@@ -20,13 +19,13 @@ public class HospitalController {
 
     @GetMapping
     @Operation(summary = "All Hospitals get API", description = "모든 병원을 조회하기 위한 API")
-    public List<HospitalInfoListResponse> hospitalListGetAll() {
+    public List<HospitalInfoResponse> hospitalListGetAll() {
         return hospitalService.getAllHospitals();
     }
 
     @GetMapping(path = "/{hospitalId}")
     @Operation(summary = "Hospital Detail get API", description = "병원 상세 정보를 조회하기 위한 API")
-    public HospitalDetailInfoResponse hospitalDetailGet(@PathVariable Long hospitalId) {
+    public HospitalInfoResponse hospitalDetailGet(@PathVariable Long hospitalId) {
         return hospitalService.getHospitalById(hospitalId);
     }
 }

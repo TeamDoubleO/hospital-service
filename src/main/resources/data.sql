@@ -1,11 +1,11 @@
 -- ==========================
 -- HOSPITAL 테이블 더미 데이터
 -- ==========================
-INSERT INTO hospital (tenant_id, hospital_name, hospital_policy)
+INSERT INTO hospital (tenant_id, hospital_name)
 VALUES
-    (101, '서울대학교병원', 1),
-    (102, '삼성서울병원', 2),
-    (103, '연세세브란스병원', 1);
+    (101, '서울대학교병원'),
+    (102, '삼성서울병원'),
+    (103, '연세세브란스병원');
 
 
 -- ==========================

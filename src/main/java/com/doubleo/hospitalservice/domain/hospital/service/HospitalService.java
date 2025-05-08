@@ -1,12 +1,11 @@
 package com.doubleo.hospitalservice.domain.hospital.service;
 
-import com.doubleo.hospitalservice.domain.hospital.dto.response.HospitalDetailInfoResponse;
-import com.doubleo.hospitalservice.domain.hospital.dto.response.HospitalInfoListResponse;
+import com.doubleo.hospitalservice.domain.hospital.dto.response.HospitalInfoResponse;
 import java.util.List;
 
 public interface HospitalService {
 
-    List<HospitalInfoListResponse> getAllHospitals();
+    List<HospitalInfoResponse> getAllHospitals();
 
-    HospitalDetailInfoResponse getHospitalById(Long id);
+    HospitalInfoResponse getHospitalById(Long id);
 }
