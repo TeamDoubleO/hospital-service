@@ -1,7 +1,6 @@
 package com.doubleo.hospitalservice.domain.area.grpc.server;
 
 import com.doubleo.hospitalservice.domain.area.dto.response.AreaGrpcResponse;
-import com.doubleo.hospitalservice.domain.area.grpc.*;
 import com.doubleo.hospitalservice.domain.area.repository.AreaRepository;
 import com.doubleo.hospitalservice.global.exception.CommonException;
 import com.doubleo.hospitalservice.global.exception.errorcode.AreaErrorCode;
