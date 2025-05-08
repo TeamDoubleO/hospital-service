@@ -1,6 +1,6 @@
 package com.doubleo.hospitalservice.domain.hospitalpolicy.domain;
 
-import com.doubleo.hospitalservice.domain.common.model.BaseTimeEntity;
+import com.doubleo.hospitalservice.domain.common.model.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @Table(name = "hospital_policy")
-public class HospitalPolicy extends BaseTimeEntity {
+public class HospitalPolicy extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "hospital_policy_id")
