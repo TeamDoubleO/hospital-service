@@ -17,7 +17,7 @@ public class BuildingServiceImpl implements BuildingService {
 
     // tenantId를 기반으로 소속 건물 리스트 조회
     @Override
-    public List<BuildingInfoResponse> getBuildingsByTenantId(Long tenantId) {
+    public List<BuildingInfoResponse> getBuildingsByTenantId(String tenantId) {
         List<Building> buildings = buildingRepository.findAllByTenantId(tenantId);
 
         return buildings.stream().map(BuildingInfoResponse::from).toList();

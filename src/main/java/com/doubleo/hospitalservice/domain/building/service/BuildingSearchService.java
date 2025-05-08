@@ -20,7 +20,8 @@ public class BuildingSearchService {
     public List<BuildingInfoResponse> getBuildingsByHospitalId(Long hospitalId) {
 
         // hospitalInternalService에서 hospitalId에 해당하는 tenantId 조회
-        Long tenantId = hospitalInternalService.getTenantIdByHospitalId(hospitalId);
+        String tenantId =
+                String.valueOf(hospitalInternalService.getTenantIdByHospitalId(hospitalId));
 
         // tenantId를 기반으로 건물 리스트 조회 후 반환
         return buildingService.getBuildingsByTenantId(tenantId);
