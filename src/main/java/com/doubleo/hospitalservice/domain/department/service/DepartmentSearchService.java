@@ -22,7 +22,7 @@ public class DepartmentSearchService {
     public List<DepartmentInfoResponse> getDepartmentListByHospitalId(Long hospitalId) {
 
         // hospitalInternalService에서 hospitalId에 해당하는 tenantId 조회
-        Long tenantId = hospitalInternalService.getTenantIdByHospitalId(hospitalId);
+        String tenantId = hospitalInternalService.getTenantIdByHospitalId(hospitalId);
 
         // tenantId를 기반으로 진료과 조회 후 반환
         return departmentService.getDepartmentListByTenantId(tenantId);

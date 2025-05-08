@@ -52,7 +52,7 @@ public class AreaGrpcServiceImpl extends AreaServiceGrpc.AreaServiceImplBase {
 
         AreaListResponse response =
                 AreaListResponse.newBuilder()
-                        .addAllAreas(
+                        .addAllArea(
                                 all.stream()
                                         .map(
                                                 dto ->

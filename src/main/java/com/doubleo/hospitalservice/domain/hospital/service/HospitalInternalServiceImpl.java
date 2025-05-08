@@ -14,7 +14,7 @@ public class HospitalInternalServiceImpl implements HospitalInternalService {
     private final HospitalRepository hospitalRepository;
 
     @Override
-    public Long getTenantIdByHospitalId(Long hospitalId) {
+    public String getTenantIdByHospitalId(Long hospitalId) {
         // 병원 아이디 -> tenant 아이디 조회
         return hospitalRepository
                 .findById(hospitalId)
