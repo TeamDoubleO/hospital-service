@@ -22,9 +22,6 @@ public class Department extends BaseEntity {
     @Column(name = "department_id")
     private Long departmentId;
 
-    @Column(name = "tenant_id", nullable = false)
-    private Long tenantId;
-
     @Column(name = "department_name", nullable = false)
     private String departmentName;
 

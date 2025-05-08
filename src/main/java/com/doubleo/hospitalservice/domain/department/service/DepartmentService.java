@@ -4,5 +4,5 @@ import com.doubleo.hospitalservice.domain.department.dto.response.DepartmentInfo
 import java.util.List;
 
 public interface DepartmentService {
-    List<DepartmentInfoResponse> getDepartmentListByTenantId(Long tenantId);
+    List<DepartmentInfoResponse> getDepartmentListByTenantId(String tenantId);
 }

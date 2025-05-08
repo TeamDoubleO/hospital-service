@@ -15,7 +15,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     private final DepartmentRepository departmentRepository;
 
     // tenantId를 기반으로 진료과 조회
-    public List<DepartmentInfoResponse> getDepartmentListByTenantId(Long tenantId) {
+    public List<DepartmentInfoResponse> getDepartmentListByTenantId(String tenantId) {
         List<Department> departments = departmentRepository.findAllByTenantId(tenantId);
 
         return departments.stream().map(DepartmentInfoResponse::from).toList();

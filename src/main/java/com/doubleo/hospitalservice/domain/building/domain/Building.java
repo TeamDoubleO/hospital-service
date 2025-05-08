@@ -22,9 +22,6 @@ public class Building extends BaseEntity {
     @Column(name = "building_id")
     private Long buildingId;
 
-    @Column(name = "tenant_id", nullable = false)
-    private Long tenantId;
-
     @Column(name = "building_name", nullable = false)
     private String buildingName;
 

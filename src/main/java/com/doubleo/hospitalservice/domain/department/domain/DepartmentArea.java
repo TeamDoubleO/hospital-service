@@ -20,9 +20,6 @@ public class DepartmentArea extends BaseEntity {
     @Column(name = "department_area_id")
     private Long id;
 
-    @Column(name = "tenant_id", nullable = false)
-    private Long tenantId;
-
     @Column(name = "department_id", nullable = false)
     private Long departmentId;
 

@@ -23,9 +23,6 @@ public class Area extends BaseEntity {
     @Column(name = "area_id", nullable = false)
     private Long id;
 
-    @Column(name = "tenant_id", nullable = false)
-    private Long tenantId;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "building_id", nullable = false)
     private Building building;
