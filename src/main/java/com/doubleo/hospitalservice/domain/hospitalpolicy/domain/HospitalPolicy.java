@@ -4,12 +4,16 @@ import com.doubleo.hospitalservice.domain.common.model.BaseEntity;
 import com.doubleo.hospitalservice.domain.hospitalpolicy.dto.request.HospitalPolicyInfoRequest;
 import jakarta.persistence.*;
 import java.time.LocalTime;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Builder
 @Entity
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "hospital_policy")
 public class HospitalPolicy extends BaseEntity {
     @Id
