@@ -1,6 +1,7 @@
 package com.doubleo.hospitalservice.domain.hospitalpolicy.service;
 
 import com.doubleo.hospitalservice.domain.hospitalpolicy.domain.HospitalPolicy;
+import com.doubleo.hospitalservice.domain.hospitalpolicy.dto.request.HospitalPolicyInfoRequest;
 import com.doubleo.hospitalservice.domain.hospitalpolicy.dto.response.HospitalPolicyInfoResponse;
 import com.doubleo.hospitalservice.domain.hospitalpolicy.repository.HospitalPolicyRepository;
 import com.doubleo.hospitalservice.global.config.util.TenantValidator;
@@ -33,5 +34,18 @@ public class HospitalPolicyServiceImpl implements HospitalPolicyService {
         tenantValidator.validateTenant(hospitalPolicy);
 
         return HospitalPolicyInfoResponse.fromEntity(hospitalPolicy);
+    }
+
+    @Transactional
+    public void updatePolicyByTenantId(String tenantId, HospitalPolicyInfoRequest request) {
+        HospitalPolicy policy =
+                hospitalPolicyRepository
+                        .getHospitalPolicyByTenantId(tenantId)
+                        .orElseThrow(
+                                () ->
+                                        new CommonException(
+                                                HospitalPolicyErrorCode.HOSPITAL_POLICY_NOT_FOUND));
+
+        policy.updatePolicyInfo(request);
     }
 }

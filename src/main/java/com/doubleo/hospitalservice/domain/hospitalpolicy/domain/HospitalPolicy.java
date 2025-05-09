@@ -1,6 +1,7 @@
 package com.doubleo.hospitalservice.domain.hospitalpolicy.domain;
 
 import com.doubleo.hospitalservice.domain.common.model.BaseEntity;
+import com.doubleo.hospitalservice.domain.hospitalpolicy.dto.request.HospitalPolicyInfoRequest;
 import jakarta.persistence.*;
 import java.time.LocalTime;
 import lombok.Getter;
@@ -21,4 +22,9 @@ public class HospitalPolicy extends BaseEntity {
 
     @Column(name = "hospital_policy_reserve_time")
     private LocalTime reserveTime;
+
+    public void updatePolicyInfo(HospitalPolicyInfoRequest request) {
+        this.reserveDayOffset = request.getReserveDayOffset();
+        this.reserveTime = request.getReserveTime();
+    }
 }
