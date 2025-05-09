@@ -3,90 +3,112 @@
 -- ==========================
 INSERT INTO hospital (tenant_id, hospital_name)
 VALUES
-    ('101', '서울대학교병원'),
-    ('102', '삼성서울병원'),
-    ('103', '연세세브란스병원');
-
+    ('SEO25NE01', '강북삼성병원'),
+    ('SEO25W102', '건국대학교병원'),
+    ('SEO25ZG03', '경희대학교병원'),
+    ('SEO25NY04', '고려대 구로병원'),
+    ('SEO259W05', '삼성서울병원'),
+    ('SEO25KG06', '서울대학교병원'),
+    ('SEO25D107', '연세대 신촌세브란스'),
+    ('SEO25JM08', '이화여대 목동병원'),
+    ('SEO25LH09', '서울아산병원'),
+    ('SEO25HG10', '중앙대학교병원');
 -- ==========================
 -- BUILDING 테이블 더미 데이터
 -- ==========================
 INSERT INTO building (tenant_id, building_name, building_code)
 VALUES
-    ('101', '서울대학교병원 본관', 'SNUH_MAIN'),
-    ('101', '서울대학교병원 어린이병원', 'SNUH_CHILD'),
-    ('102', '삼성서울병원 본관', 'SSUH_MAIN'),
-    ('102', '삼성서울병원 암센터', 'SSUH_CANCER'),
-    ('103', '연세세브란스병원 본관', 'YONSEI_MAIN'),
-    ('103', '연세세브란스병원 심장혈관센터', 'YONSEI_HEART');
-
+    ('BUILD001', 'SEO25NE01', '강북삼성병원 본관동'),
+    ('BUILD002', 'SEO25W102', '건국대학교병원 본관동'),
+    ('BUILD003', 'SEO25ZG03', '경희대학교병원 본관동'),
+    ('BUILD004', 'SEO25NY04', '고려대 구로병원 본관동'),
+    ('BUILD005', 'SEO259W05', '삼성서울병원 본관동'),
+    ('BUILD006', 'SEO25KG06', '서울대학교병원 본관동'),
+    ('BUILD007', 'SEO25D107', '연세대 신촌세브란스 본관동'),
+    ('BUILD008', 'SEO25JM08', '이화여대 목동병원 본관동'),
+    ('BUILD009', 'SEO25LH09', '서울아산병원 본관동'),
+    ('BUILD010', 'SEO25HG10', '중앙대학교병원 본관동');
 -- ==========================
 -- DEPARTMENT 테이블 더미 데이터
 -- ==========================
-
--- 서울대학교병원 진료과 (tenantId: '101')
-INSERT INTO department (tenant_id, department_name, department_code)
-VALUES
-    ('101', '내과', 'INT'),
-    ('101', '외과', 'SUR'),
-    ('101', '소아청소년과', 'PED');
-
--- 삼성서울병원 진료과 (tenantId: '102')
-INSERT INTO department (tenant_id, department_name, department_code)
-VALUES
-    ('102', '신경과', 'NEU'),
-    ('102', '흉부외과', 'CTS'),
-    ('102', '피부과', 'DER');
-
--- 연세세브란스병원 진료과 (tenantId: '103')
-INSERT INTO department (tenant_id, department_name, department_code)
-VALUES
-    ('103', '정형외과', 'ORT'),
-    ('103', '산부인과', 'OBG'),
-    ('103', '비뇨의학과', 'URO');
+-- ==========================
+-- DEPARTMENT 테이블 더미 데이터
+-- ==========================
+INSERT INTO department (tenant_id, department_name, department_code) VALUES
+    ('SEO25NE01', '내과', 'DEPT001'),
+    ('SEO25NE01', '정형외과', 'DEPT002'),
+    ('SEO25NE01', '피부과', 'DEPT003'),
+    ('SEO25W102', '외과', 'DEPT004'),
+    ('SEO25W102', '산부인과', 'DEPT005'),
+    ('SEO25W102', '소아청소년과', 'DEPT006'),
+    ('SEO25ZG03', '신경과', 'DEPT007'),
+    ('SEO25ZG03', '흉부외과', 'DEPT008'),
+    ('SEO25ZG03', '응급의학과', 'DEPT009'),
+    ('SEO25NY04', '내과', 'DEPT010'),
+    ('SEO25NY04', '외과', 'DEPT011'),
+    ('SEO25NY04', '신경과', 'DEPT012'),
+    ('SEO259W05', '소아청소년과', 'DEPT013'),
+    ('SEO259W05', '피부과', 'DEPT014'),
+    ('SEO259W05', '정형외과', 'DEPT015'),
+    ('SEO25KG06', '내과', 'DEPT016'),
+    ('SEO25KG06', '신경과', 'DEPT017'),
+    ('SEO25KG06', '정신건강의학과', 'DEPT018'),
+    ('SEO25D107', '외과', 'DEPT019'),
+    ('SEO25D107', '산부인과', 'DEPT020'),
+    ('SEO25D107', '피부과', 'DEPT021'),
+    ('SEO25JM08', '응급의학과', 'DEPT022'),
+    ('SEO25JM08', '비뇨의학과', 'DEPT023'),
+    ('SEO25JM08', '소아청소년과', 'DEPT024'),
+    ('SEO25LH09', '내과', 'DEPT025'),
+    ('SEO25LH09', '흉부외과', 'DEPT026'),
+    ('SEO25LH09', '정형외과', 'DEPT027'),
+    ('SEO25HG10', '피부과', 'DEPT028'),
+    ('SEO25HG10', '외과', 'DEPT029'),
+    ('SEO25HG10', '정신건강의학과', 'DEPT030');
 
 -- ==========================
 -- AREA 테이블 더미 데이터
 -- ==========================
-
--- 서울대학교병원 본관 구역
-INSERT INTO area (tenant_id, building_id, area_name, area_code)
-VALUES
-    ('101', 1, '진료구역 101', 'SNUH_MAIN_101'),
-    ('101', 1, '진료구역 102', 'SNUH_MAIN_102');
-
--- 서울대학교병원 어린이병원 구역
-INSERT INTO area (tenant_id, building_id, area_name, area_code)
-VALUES
-    ('101', 2, '소아진료실 1', 'SNUH_CHILD_1'),
-    ('101', 2, '소아진료실 2', 'SNUH_CHILD_2');
-
--- 삼성서울병원 본관 구역
-INSERT INTO area (tenant_id, building_id, area_name, area_code)
-VALUES
-    ('102', 3, '외래 101', 'SSUH_MAIN_101'),
-    ('102', 3, '외래 102', 'SSUH_MAIN_102');
-
--- 삼성서울병원 암센터 구역
-INSERT INTO area (tenant_id, building_id, area_name, area_code)
-VALUES
-    ('102', 4, '항암치료실 1', 'SSUH_CANCER_1');
-
--- 연세세브란스병원 본관 구역
-INSERT INTO area (tenant_id, building_id, area_name, area_code)
-VALUES
-    ('103', 5, '입원실 101', 'YONSEI_MAIN_101');
-
--- 연세세브란스병원 심장혈관센터 구역
-INSERT INTO area (tenant_id, building_id, area_name, area_code)
-VALUES
-    ('103', 6, '심장센터 진료실', 'YONSEI_HEART_1'),
-    ('103', 6, '검사실', 'YONSEI_HEART_2');
+INSERT INTO area (tenant_id, building_id, area_name, area_code) VALUES
+    ('SEO25NE01', 1, '강북삼성병원 재활센터', '강북삼2-MAIN-002'),
+    ('SEO25NE01', 1, '강북삼성병원 건강검진센터', '강북삼2-MAIN-003'),
+    ('SEO25NE01', 1, '강북삼성병원 중환자실', '강북삼2-MAIN-004'),
+    ('SEO25W102', 2, '건국대학교병원 검사실', '건국대2-MAIN-006'),
+    ('SEO25ZG03', 3, '경희대학교병원 재활센터', '경희대2-MAIN-007'),
+    ('SEO25ZG03', 3, '경희대학교병원 중환자실', '경희대2-MAIN-008'),
+    ('SEO25ZG03', 3, '경희대학교병원 수술실', '경희대2-MAIN-009'),
+    ('SEO25ZG03', 3, '경희대학교병원 심장혈관센터', '경희대2-MAIN-010'),
+    ('SEO25NY04', 4, '고려대 구로병원 암센터', '고려대2-MAIN-011'),
+    ('SEO25NY04', 4, '고려대 구로병원 중환자실', '고려대2-MAIN-012'),
+    ('SEO25NY04', 4, '고려대 구로병원 영상의학센터', '고려대2-MAIN-013'),
+    ('SEO259W05', 5, '삼성서울병원 수술실', '삼성서2-MAIN-015'),
+    ('SEO259W05', 5, '삼성서울병원 암센터', '삼성서2-MAIN-016'),
+    ('SEO259W05', 5, '삼성서울병원 건강검진센터', '삼성서2-MAIN-017'),
+    ('SEO25KG06', 6, '서울대학교병원 수술실', '서울대2-MAIN-019'),
+    ('SEO25KG06', 6, '서울대학교병원 중환자실', '서울대2-MAIN-020'),
+    ('SEO25KG06', 6, '서울대학교병원 약제과', '서울대2-MAIN-021'),
+    ('SEO25D107', 7, '연세대 신촌세브란스 외래진료동', '연세대2-MAIN-023'),
+    ('SEO25D107', 7, '연세대 신촌세브란스 입원동', '연세대2-MAIN-025'),
+    ('SEO25JM08', 8, '이화여대 목동병원 통합병동', '이화여2-MAIN-026'),
+    ('SEO25LH09', 9, '서울아산병원 외래진료동', '서울아2-MAIN-029'),
+    ('SEO25LH09', 9, '서울아산병원 검사실', '서울아2-MAIN-030'),
+    ('SEO25LH09', 9, '서울아산병원 내시경센터', '서울아2-MAIN-031'),
+    ('SEO25HG10', 10, '중앙대학교병원 재활센터', '중앙대2-MAIN-032'),
+    ('SEO25HG10', 10, '중앙대학교병원 입원동', '중앙대2-MAIN-033'),
+    ('SEO25HG10', 10, '중앙대학교병원 통합병동', '중앙대2-MAIN-034');
 
 -- ==========================
 -- HOSPITAL_POLICY 테이블 더미 데이터
 -- ==========================
 INSERT INTO hospital_policy (hospital_policy_reserve_day_offset, hospital_policy_reserve_time, tenant_id)
 VALUES
-    (2, '09:00:00', '101'), -- 서울대학교병원
-    (1, '08:30:00', '102'), -- 삼성서울병원
-    (3, '10:00:00', '103'); -- 연세세브란스병원
+    (3, '09:00:00', 'SEO25NE01'),
+    (3, '09:00:00', 'SEO25W102'),
+    (3, '09:00:00', 'SEO25ZG03'),
+    (3, '09:00:00', 'SEO25NY04'),
+    (3, '09:00:00', 'SEO259W05'),
+    (3, '09:00:00', 'SEO25KG06'),
+    (3, '09:00:00', 'SEO25D107'),
+    (3, '09:00:00', 'SEO25JM08'),
+    (3, '09:00:00', 'SEO25LH09'),
+    (3, '09:00:00', 'SEO25HG10');
