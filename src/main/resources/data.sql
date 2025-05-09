@@ -81,3 +81,12 @@ INSERT INTO area (tenant_id, building_id, area_name, area_code)
 VALUES
     ('103', 6, '심장센터 진료실', 'YONSEI_HEART_1'),
     ('103', 6, '검사실', 'YONSEI_HEART_2');
+
+-- ==========================
+-- HOSPITAL_POLICY 테이블 더미 데이터
+-- ==========================
+INSERT INTO hospital_policy (hospital_policy_reserve_day_offset, hospital_policy_reserve_time, tenant_id)
+VALUES
+    (2, '09:00:00', '101'), -- 서울대학교병원
+    (1, '08:30:00', '102'), -- 삼성서울병원
+    (3, '10:00:00', '103'); -- 연세세브란스병원
