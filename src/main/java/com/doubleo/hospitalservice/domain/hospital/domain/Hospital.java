@@ -23,7 +23,4 @@ public class Hospital extends BaseEntity {
 
     @Column(name = "hospital_name", nullable = false)
     private String hospitalName;
-
-    @Column(name = "hospital_policy", nullable = false)
-    private Long hospitalPolicy;
 }

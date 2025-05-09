@@ -1,4 +1,4 @@
-package com.doubleo.hospitalservice.domain.area.grpc;
+package com.doubleo.hospitalservice.domain.area.grpc.server;
 
 import com.doubleo.hospitalservice.domain.area.dto.response.AreaGrpcResponse;
 import com.doubleo.hospitalservice.domain.area.repository.AreaRepository;
