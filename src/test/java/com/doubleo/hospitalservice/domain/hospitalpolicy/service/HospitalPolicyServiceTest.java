@@ -35,7 +35,7 @@ class HospitalPolicyServiceImplTest {
 
         // given
         TenantContextHolder.setTenantId("101");
-        String tenantId = TenantContextHolder.getTenantId();
+        String tenantId = tenantValidator.getTenantId();
 
         HospitalPolicy policy =
                 HospitalPolicy.builder()
@@ -63,7 +63,7 @@ class HospitalPolicyServiceImplTest {
     void getPolicyByTenantId_정책없음_예외() {
         // given
         TenantContextHolder.setTenantId("101");
-        String tenantId = TenantContextHolder.getTenantId();
+        String tenantId = tenantValidator.getTenantId();
 
         when(hospitalPolicyRepository.getHospitalPolicyByTenantId(tenantId))
                 .thenReturn(Optional.empty());
@@ -81,7 +81,7 @@ class HospitalPolicyServiceImplTest {
     void updatePolicyByTenantId_성공() {
         // given
         TenantContextHolder.setTenantId("101");
-        String tenantId = TenantContextHolder.getTenantId();
+        String tenantId = tenantValidator.getTenantId();
 
         HospitalPolicy policy =
                 HospitalPolicy.builder()
@@ -112,7 +112,7 @@ class HospitalPolicyServiceImplTest {
     void updatePolicyByTenantId_정책없음_예외() {
         // given
         TenantContextHolder.setTenantId("101");
-        String tenantId = TenantContextHolder.getTenantId();
+        String tenantId = tenantValidator.getTenantId();
         HospitalPolicyInfoRequest request = new HospitalPolicyInfoRequest();
 
         when(hospitalPolicyRepository.getHospitalPolicyByTenantId(tenantId))

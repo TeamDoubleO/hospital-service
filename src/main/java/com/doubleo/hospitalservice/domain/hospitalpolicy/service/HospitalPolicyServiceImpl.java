@@ -7,7 +7,6 @@ import com.doubleo.hospitalservice.domain.hospitalpolicy.repository.HospitalPoli
 import com.doubleo.hospitalservice.global.config.util.TenantValidator;
 import com.doubleo.hospitalservice.global.exception.CommonException;
 import com.doubleo.hospitalservice.global.exception.errorcode.HospitalPolicyErrorCode;
-import com.doubleo.tenantcontext.TenantContextHolder;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,7 +22,7 @@ public class HospitalPolicyServiceImpl implements HospitalPolicyService {
     @Override
     public HospitalPolicyInfoResponse getPolicyByTenantId() {
 
-        String tenantId = TenantContextHolder.getTenantId();
+        String tenantId = tenantValidator.getTenantId();
 
         HospitalPolicy policy =
                 hospitalPolicyRepository
@@ -41,7 +40,7 @@ public class HospitalPolicyServiceImpl implements HospitalPolicyService {
     @Transactional
     public void updatePolicyByTenantId(HospitalPolicyInfoRequest request) {
 
-        String tenantId = TenantContextHolder.getTenantId();
+        String tenantId = tenantValidator.getTenantId();
 
         HospitalPolicy policy =
                 hospitalPolicyRepository
