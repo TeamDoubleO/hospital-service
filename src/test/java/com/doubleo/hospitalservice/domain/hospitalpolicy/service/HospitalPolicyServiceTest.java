@@ -10,10 +10,10 @@ import com.doubleo.hospitalservice.domain.hospitalpolicy.repository.HospitalPoli
 import com.doubleo.hospitalservice.global.config.util.TenantValidator;
 import com.doubleo.hospitalservice.global.exception.CommonException;
 import com.doubleo.hospitalservice.global.exception.errorcode.HospitalPolicyErrorCode;
+import com.doubleo.tenantcontext.TenantContextHolder;
 import java.time.LocalTime;
 import java.util.Optional;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.mockito.*;
 import org.springframework.test.util.ReflectionTestUtils;
 
@@ -32,8 +32,11 @@ class HospitalPolicyServiceImplTest {
 
     @Test
     void getPolicyByTenantId_성공() {
+
         // given
-        String tenantId = "101";
+        TenantContextHolder.setTenantId("101");
+        String tenantId = TenantContextHolder.getTenantId();
+
         HospitalPolicy policy =
                 HospitalPolicy.builder()
                         .id(1L)
@@ -45,37 +48,44 @@ class HospitalPolicyServiceImplTest {
                 .thenReturn(Optional.of(policy));
 
         // when
-        HospitalPolicyInfoResponse response = hospitalPolicyService.getPolicyByTenantId(tenantId);
+        HospitalPolicyInfoResponse result = hospitalPolicyService.getPolicyByTenantId();
 
         // then
-        assertEquals(3, response.getReserveDayOffset());
-        assertEquals(LocalTime.of(9, 0), response.getReserveTime());
+        assertNotNull(result);
+        assertEquals(3, result.getReserveDayOffset());
+        assertEquals(LocalTime.of(9, 0), result.getReserveTime());
         verify(tenantValidator).validateTenant(policy);
+
+        TenantContextHolder.clear();
     }
 
     @Test
     void getPolicyByTenantId_정책없음_예외() {
         // given
-        String tenantId = "999";
+        TenantContextHolder.setTenantId("101");
+        String tenantId = TenantContextHolder.getTenantId();
+
         when(hospitalPolicyRepository.getHospitalPolicyByTenantId(tenantId))
                 .thenReturn(Optional.empty());
 
         // when & then
         CommonException ex =
                 assertThrows(
-                        CommonException.class,
-                        () -> hospitalPolicyService.getPolicyByTenantId(tenantId));
+                        CommonException.class, () -> hospitalPolicyService.getPolicyByTenantId());
         assertEquals(HospitalPolicyErrorCode.HOSPITAL_POLICY_NOT_FOUND, ex.getErrorCode());
+
+        TenantContextHolder.clear();
     }
 
     @Test
     void updatePolicyByTenantId_성공() {
         // given
-        String tenantId = "101";
+        TenantContextHolder.setTenantId("101");
+        String tenantId = TenantContextHolder.getTenantId();
+
         HospitalPolicy policy =
                 HospitalPolicy.builder()
                         .id(1L)
-                        //                .tenantId(tenantId)
                         .reserveDayOffset(2)
                         .reserveTime(LocalTime.of(8, 0))
                         .build();
@@ -88,18 +98,21 @@ class HospitalPolicyServiceImplTest {
                 .thenReturn(Optional.of(policy));
 
         // when
-        hospitalPolicyService.updatePolicyByTenantId(tenantId, request);
+        hospitalPolicyService.updatePolicyByTenantId(request);
 
         // then
         assertEquals(5, policy.getReserveDayOffset());
         assertEquals(LocalTime.of(11, 0), policy.getReserveTime());
         verify(tenantValidator).validateTenant(policy);
+
+        TenantContextHolder.clear();
     }
 
     @Test
     void updatePolicyByTenantId_정책없음_예외() {
         // given
-        String tenantId = "404";
+        TenantContextHolder.setTenantId("101");
+        String tenantId = TenantContextHolder.getTenantId();
         HospitalPolicyInfoRequest request = new HospitalPolicyInfoRequest();
 
         when(hospitalPolicyRepository.getHospitalPolicyByTenantId(tenantId))
@@ -109,7 +122,9 @@ class HospitalPolicyServiceImplTest {
         CommonException ex =
                 assertThrows(
                         CommonException.class,
-                        () -> hospitalPolicyService.updatePolicyByTenantId(tenantId, request));
+                        () -> hospitalPolicyService.updatePolicyByTenantId(request));
         assertEquals(HospitalPolicyErrorCode.HOSPITAL_POLICY_NOT_FOUND, ex.getErrorCode());
+
+        TenantContextHolder.clear();
     }
 }
