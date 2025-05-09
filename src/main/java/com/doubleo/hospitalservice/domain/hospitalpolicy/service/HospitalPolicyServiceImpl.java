@@ -20,20 +20,18 @@ public class HospitalPolicyServiceImpl implements HospitalPolicyService {
     private final TenantValidator<HospitalPolicy> tenantValidator;
 
     @Override
-    public HospitalPolicyInfoResponse getPolicyByHospitalId(Long hospitalId) {
-        // hospitalId로 정책 조회
-        HospitalPolicy hospitalPolicy =
+    public HospitalPolicyInfoResponse getPolicyByTenantId(String tenantId) {
+        HospitalPolicy policy =
                 hospitalPolicyRepository
-                        .findById(hospitalId)
+                        .getHospitalPolicyByTenantId(tenantId)
                         .orElseThrow(
                                 () ->
                                         new CommonException(
                                                 HospitalPolicyErrorCode.HOSPITAL_POLICY_NOT_FOUND));
 
-        // 테넌트 검증
-        tenantValidator.validateTenant(hospitalPolicy);
+        tenantValidator.validateTenant(policy);
 
-        return HospitalPolicyInfoResponse.fromEntity(hospitalPolicy);
+        return HospitalPolicyInfoResponse.fromEntity(policy);
     }
 
     @Transactional
@@ -45,6 +43,7 @@ public class HospitalPolicyServiceImpl implements HospitalPolicyService {
                                 () ->
                                         new CommonException(
                                                 HospitalPolicyErrorCode.HOSPITAL_POLICY_NOT_FOUND));
+        tenantValidator.validateTenant(policy);
 
         policy.updatePolicyInfo(request);
     }

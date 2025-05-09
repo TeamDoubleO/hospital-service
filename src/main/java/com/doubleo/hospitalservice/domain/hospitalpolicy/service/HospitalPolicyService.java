@@ -4,7 +4,7 @@ import com.doubleo.hospitalservice.domain.hospitalpolicy.dto.request.HospitalPol
 import com.doubleo.hospitalservice.domain.hospitalpolicy.dto.response.HospitalPolicyInfoResponse;
 
 public interface HospitalPolicyService {
-    HospitalPolicyInfoResponse getPolicyByHospitalId(Long hospitalId);
+    HospitalPolicyInfoResponse getPolicyByTenantId(String tenantId);
 
     void updatePolicyByTenantId(String tenantId, HospitalPolicyInfoRequest request);
 }

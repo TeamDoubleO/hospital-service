@@ -13,10 +13,10 @@ public class HospitalPolicyController {
 
     private final HospitalPolicyService hospitalPolicyService;
 
-    @GetMapping("/{hospital_id}")
-    public HospitalPolicyInfoResponse hospitalPolicyGet(
-            @PathVariable("hospital_id") Long hospitalId) {
-        return hospitalPolicyService.getPolicyByHospitalId(hospitalId);
+    @GetMapping("/me")
+    public HospitalPolicyInfoResponse getMyHospitalPolicy(
+            @RequestHeader("X-TENANT-ID") String tenantId) {
+        return hospitalPolicyService.getPolicyByTenantId(tenantId);
     }
 
     @PatchMapping("/me")
