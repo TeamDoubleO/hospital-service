@@ -41,7 +41,7 @@ class HospitalPolicyServiceImplTest {
                 HospitalPolicy.builder()
                         .id(1L)
                         .reserveDayOffset(3)
-                        .reserveTime(LocalTime.of(9, 0))
+                        .cutoffTime(LocalTime.of(9, 0))
                         .build();
 
         when(hospitalPolicyRepository.getHospitalPolicyByTenantId(tenantId))
@@ -53,7 +53,7 @@ class HospitalPolicyServiceImplTest {
         // then
         assertNotNull(result);
         assertEquals(3, result.getReserveDayOffset());
-        assertEquals(LocalTime.of(9, 0), result.getReserveTime());
+        assertEquals(LocalTime.of(9, 0), result.getCutoffTime());
         verify(tenantValidator).validateTenant(policy);
 
         TenantContextHolder.clear();
@@ -87,12 +87,12 @@ class HospitalPolicyServiceImplTest {
                 HospitalPolicy.builder()
                         .id(1L)
                         .reserveDayOffset(2)
-                        .reserveTime(LocalTime.of(8, 0))
+                        .cutoffTime(LocalTime.of(8, 0))
                         .build();
 
         HospitalPolicyInfoRequest request = new HospitalPolicyInfoRequest();
         ReflectionTestUtils.setField(request, "reserveDayOffset", 5);
-        ReflectionTestUtils.setField(request, "reserveTime", LocalTime.of(11, 0));
+        ReflectionTestUtils.setField(request, "cutoffTime", LocalTime.of(11, 0));
 
         when(hospitalPolicyRepository.getHospitalPolicyByTenantId(tenantId))
                 .thenReturn(Optional.of(policy));
@@ -102,7 +102,7 @@ class HospitalPolicyServiceImplTest {
 
         // then
         assertEquals(5, policy.getReserveDayOffset());
-        assertEquals(LocalTime.of(11, 0), policy.getReserveTime());
+        assertEquals(LocalTime.of(11, 0), policy.getCutoffTime());
         verify(tenantValidator).validateTenant(policy);
 
         TenantContextHolder.clear();

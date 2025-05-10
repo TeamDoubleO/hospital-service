@@ -19,7 +19,6 @@ public class TenantValidator<T extends Tenant> {
 
     public T validateTenant(T entity) {
         String currentTenantId = getTenantId();
-        log.info("validateTenant: currentTenantId={}", currentTenantId);
         if (!entity.getTenantId().equals(currentTenantId)) {
             throw new CommonException(TenantErrorCode.INVALID_TENANT_ID);
         }

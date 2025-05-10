@@ -10,5 +10,5 @@ public class HospitalPolicyInfoRequest {
     private int reserveDayOffset;
 
     @NotNull(message = "예약 가능 시간은 필수입니다.")
-    private LocalTime reserveTime;
+    private LocalTime cutoffTime;
 }

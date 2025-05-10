@@ -29,10 +29,10 @@ public class HospitalPolicy extends BaseEntity {
     private int reserveDayOffset;
 
     @Column(name = "hospital_policy_reserve_time")
-    private LocalTime reserveTime;
+    private LocalTime cutoffTime;
 
     public void updatePolicyInfo(HospitalPolicyInfoRequest request) {
         this.reserveDayOffset = request.getReserveDayOffset();
-        this.reserveTime = request.getReserveTime();
+        this.cutoffTime = request.getCutoffTime();
     }
 }

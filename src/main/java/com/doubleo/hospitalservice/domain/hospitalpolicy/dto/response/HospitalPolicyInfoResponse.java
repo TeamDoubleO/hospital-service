@@ -12,9 +12,9 @@ import lombok.NoArgsConstructor;
 public class HospitalPolicyInfoResponse {
 
     private int reserveDayOffset;
-    private LocalTime reserveTime;
+    private LocalTime cutoffTime;
 
     public static HospitalPolicyInfoResponse fromEntity(HospitalPolicy policy) {
-        return HospitalPolicyInfoResponse.of(policy.getReserveDayOffset(), policy.getReserveTime());
+        return HospitalPolicyInfoResponse.of(policy.getReserveDayOffset(), policy.getCutoffTime());
     }
 }
