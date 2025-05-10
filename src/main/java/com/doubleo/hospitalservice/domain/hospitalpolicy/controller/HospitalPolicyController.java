@@ -26,7 +26,7 @@ public class HospitalPolicyController {
     }
 
     @GetMapping("/available-dates")
-    public HospitalAvailableDateResponse getAvailableDates() {
-        return hospitalPolicyService.getAvailableDatesByTenantId();
+    public HospitalAvailableDateResponse availableDatesGet() {
+        return hospitalPolicyService.getAvailableDateListByTenantId();
     }
 }

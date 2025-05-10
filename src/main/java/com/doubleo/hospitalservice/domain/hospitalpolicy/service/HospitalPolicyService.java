@@ -9,5 +9,5 @@ public interface HospitalPolicyService {
 
     void updatePolicyByTenantId(HospitalPolicyInfoRequest request);
 
-    HospitalAvailableDateResponse getAvailableDatesByTenantId();
+    HospitalAvailableDateResponse getAvailableDateListByTenantId();
 }

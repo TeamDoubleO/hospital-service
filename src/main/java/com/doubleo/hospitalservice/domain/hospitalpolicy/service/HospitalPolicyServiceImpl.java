@@ -61,7 +61,7 @@ public class HospitalPolicyServiceImpl implements HospitalPolicyService {
     }
 
     @Override
-    public HospitalAvailableDateResponse getAvailableDatesByTenantId() {
+    public HospitalAvailableDateResponse getAvailableDateListByTenantId() {
         String tenantId = tenantValidator.getTenantId();
 
         HospitalPolicy policy =
