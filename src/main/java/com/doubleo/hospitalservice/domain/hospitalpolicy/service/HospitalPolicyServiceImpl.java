@@ -79,7 +79,7 @@ public class HospitalPolicyServiceImpl implements HospitalPolicyService {
     private List<LocalDate> calculateAvailableDates(HospitalPolicy policy, LocalDateTime now) {
 
         // 기준 시간을 넘었는지
-        boolean isAfterCutoff = now.toLocalTime().isAfter(policy.getReserveTime());
+        boolean isAfterCutoff = now.toLocalTime().isAfter(policy.getCutoffTime());
         // 기준 시간을 전이면 첫날짜를 오늘로, 이후면 다음날로 설정
         LocalDate baseDate = isAfterCutoff ? now.toLocalDate().plusDays(1) : now.toLocalDate();
 
