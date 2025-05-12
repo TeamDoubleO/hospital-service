@@ -28,7 +28,7 @@ public class HospitalPolicy extends BaseEntity {
     @Schema(description = "며칠 전부터 예약이 가능한지 나타냅니다. (예: 3이면 3일 전부터 예약 가능)")
     private int reserveDayOffset;
 
-    @Column(name = "hospital_policy_reserve_time")
+    @Column(name = "hospital_policy_cutoff_time")
     private LocalTime cutoffTime;
 
     public void updatePolicyInfo(HospitalPolicyInfoRequest request) {
