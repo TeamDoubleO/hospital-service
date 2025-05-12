@@ -32,7 +32,7 @@ public class HospitalPolicy extends BaseEntity {
     private LocalTime cutoffTime;
 
     public void updatePolicyInfo(HospitalPolicyInfoRequest request) {
-        this.reserveDayOffset = request.getReserveDayOffset();
-        this.cutoffTime = request.getCutoffTime();
+        this.reserveDayOffset = request.reserveDayOffset();
+        this.cutoffTime = request.cutoffTime();
     }
 }
