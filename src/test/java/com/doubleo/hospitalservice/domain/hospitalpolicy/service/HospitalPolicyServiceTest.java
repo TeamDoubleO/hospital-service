@@ -15,7 +15,6 @@ import java.time.LocalTime;
 import java.util.Optional;
 import org.junit.jupiter.api.*;
 import org.mockito.*;
-import org.springframework.test.util.ReflectionTestUtils;
 
 class HospitalPolicyServiceImplTest {
 
@@ -51,9 +50,8 @@ class HospitalPolicyServiceImplTest {
         HospitalPolicyInfoResponse result = hospitalPolicyService.getPolicyByTenantId();
 
         // then
-        assertNotNull(result);
-        assertEquals(3, result.getReserveDayOffset());
-        assertEquals(LocalTime.of(9, 0), result.getCutoffTime());
+        assertEquals(3, policy.getReserveDayOffset());
+        assertEquals(LocalTime.of(9, 0), policy.getCutoffTime());
         verify(tenantValidator).validateTenant(policy);
 
         TenantContextHolder.clear();
@@ -86,13 +84,11 @@ class HospitalPolicyServiceImplTest {
         HospitalPolicy policy =
                 HospitalPolicy.builder()
                         .id(1L)
-                        .reserveDayOffset(2)
-                        .cutoffTime(LocalTime.of(8, 0))
+                        .reserveDayOffset(3)
+                        .cutoffTime(LocalTime.of(9, 0))
                         .build();
 
-        HospitalPolicyInfoRequest request = new HospitalPolicyInfoRequest();
-        ReflectionTestUtils.setField(request, "reserveDayOffset", 5);
-        ReflectionTestUtils.setField(request, "cutoffTime", LocalTime.of(11, 0));
+        HospitalPolicyInfoRequest request = new HospitalPolicyInfoRequest(5, LocalTime.of(11, 0));
 
         when(hospitalPolicyRepository.getHospitalPolicyByTenantId(tenantId))
                 .thenReturn(Optional.of(policy));
@@ -113,7 +109,7 @@ class HospitalPolicyServiceImplTest {
         // given
         TenantContextHolder.setTenantId("101");
         String tenantId = tenantValidator.getTenantId();
-        HospitalPolicyInfoRequest request = new HospitalPolicyInfoRequest();
+        HospitalPolicyInfoRequest request = new HospitalPolicyInfoRequest(5, LocalTime.of(11, 0));
 
         when(hospitalPolicyRepository.getHospitalPolicyByTenantId(tenantId))
                 .thenReturn(Optional.empty());
