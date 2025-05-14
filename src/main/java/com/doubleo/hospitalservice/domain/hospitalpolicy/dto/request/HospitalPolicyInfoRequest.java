@@ -12,5 +12,5 @@ public record HospitalPolicyInfoRequest(
                 @NotNull(message = "예약 가능 시간은 필수입니다.")
                 LocalTime cutoffTime,
         @Schema(description = "환자별 허용 보호자 수", example = "1L")
-        @NotNull(message = "환자별 허용 보호자 수는 필수입니다.")
+                @NotNull(message = "환자별 허용 보호자 수는 필수입니다.")
                 Long maxGuardians) {}
