@@ -31,8 +31,13 @@ public class HospitalPolicy extends BaseEntity {
     @Column(name = "hospital_policy_cutoff_time")
     private LocalTime cutoffTime;
 
+    @Column(name = "hospital_policy_max_guardian_num")
+    @Min(value = 0, message = "최대 보호자 수는 0 이상이어야 합니다.")
+    private Long maxGuardianNum;
+
     public void updatePolicyInfo(HospitalPolicyInfoRequest request) {
         this.reserveDayOffset = request.reserveDayOffset();
         this.cutoffTime = request.cutoffTime();
+        this.maxGuardianNum = request.maxGuardianNum();
     }
 }

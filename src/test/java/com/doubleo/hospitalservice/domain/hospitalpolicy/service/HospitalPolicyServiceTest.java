@@ -88,7 +88,8 @@ class HospitalPolicyServiceImplTest {
                         .cutoffTime(LocalTime.of(9, 0))
                         .build();
 
-        HospitalPolicyInfoRequest request = new HospitalPolicyInfoRequest(5, LocalTime.of(11, 0));
+        HospitalPolicyInfoRequest request =
+                new HospitalPolicyInfoRequest(5, LocalTime.of(11, 0), 2L);
 
         when(hospitalPolicyRepository.getHospitalPolicyByTenantId(tenantId))
                 .thenReturn(Optional.of(policy));
@@ -109,7 +110,8 @@ class HospitalPolicyServiceImplTest {
         // given
         TenantContextHolder.setTenantId("101");
         String tenantId = tenantValidator.getTenantId();
-        HospitalPolicyInfoRequest request = new HospitalPolicyInfoRequest(5, LocalTime.of(11, 0));
+        HospitalPolicyInfoRequest request =
+                new HospitalPolicyInfoRequest(5, LocalTime.of(11, 0), 2L);
 
         when(hospitalPolicyRepository.getHospitalPolicyByTenantId(tenantId))
                 .thenReturn(Optional.empty());

@@ -100,15 +100,15 @@ INSERT INTO area (tenant_id, building_id, area_name, area_code) VALUES
 -- ==========================
 -- HOSPITAL_POLICY 테이블 더미 데이터
 -- ==========================
-INSERT INTO hospital_policy (hospital_policy_reserve_day_offset, hospital_policy_cutoff_time, tenant_id)
+INSERT INTO hospital_policy (hospital_policy_reserve_day_offset, hospital_policy_cutoff_time, hospital_policy_max_guardian_num, tenant_id)
 VALUES
-    (3, '09:00:00', 'SEO25NE01'),
-    (3, '09:00:00', 'SEO25W102'),
-    (3, '09:00:00', 'SEO25ZG03'),
-    (3, '09:00:00', 'SEO25NY04'),
-    (3, '09:00:00', 'SEO259W05'),
-    (3, '09:00:00', 'SEO25KG06'),
-    (3, '09:00:00', 'SEO25D107'),
-    (3, '09:00:00', 'SEO25JM08'),
-    (3, '09:00:00', 'SEO25LH09'),
-    (3, '09:00:00', 'SEO25HG10');
+    (3, '09:00:00', 1, 'SEO25NE01'),
+    (3, '09:00:00', 1, 'SEO25W102'),
+    (3, '09:00:00', 1, 'SEO25ZG03'),
+    (3, '09:00:00', 1, 'SEO25NY04'),
+    (3, '09:00:00', 1, 'SEO259W05'),
+    (3, '09:00:00', 1, 'SEO25KG06'),
+    (3, '09:00:00', 1, 'SEO25D107'),
+    (3, '09:00:00', 1, 'SEO25JM08'),
+    (3, '09:00:00', 1, 'SEO25LH09'),
+    (3, '09:00:00', 1, 'SEO25HG10');
