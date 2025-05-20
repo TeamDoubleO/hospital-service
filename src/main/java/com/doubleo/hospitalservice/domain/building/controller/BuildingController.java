@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/buildings")
+@RequestMapping("/hospitals/buildings")
 @RequiredArgsConstructor
 public class BuildingController {
 
