@@ -4,5 +4,5 @@ import com.doubleo.hospitalservice.domain.building.dto.response.BuildingInfoResp
 import java.util.List;
 
 public interface BuildingService {
-    List<BuildingInfoResponse> getBuildingsByTenantId(String tenantId);
+    List<BuildingInfoResponse> getBuildingsByTenantId();
 }
