@@ -17,8 +17,8 @@ public class BuildingController {
     @GetMapping
     @Operation(
             summary = "Get Buildings by Hospital ID",
-            description = "병원 ID를 기준으로 건물 리스트를 조회하는 API")
-    public List<BuildingInfoResponse> buildingsGetByHospitalId() {
+            description = "병원 테넌트 id를 기준으로 건물 리스트를 조회하는 API")
+    public List<BuildingInfoResponse> buildingsGetByTenantId() {
         return buildingService.getBuildingsByTenantId();
     }
 }
