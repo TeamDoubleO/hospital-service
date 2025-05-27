@@ -5,7 +5,7 @@ import com.doubleo.hospitalservice.domain.area.dto.response.AreaGrpcResponse;
 import com.doubleo.hospitalservice.domain.area.repository.AreaRepository;
 import com.doubleo.hospitalservice.domain.building.domain.Building;
 import com.doubleo.hospitalservice.domain.building.repository.BuildingRepository;
-import com.doubleo.hospitalservice.global.exception.CommonException;
+import com.doubleo.hospitalservice.global.exception.GrpcExceptionUtil;
 import com.doubleo.hospitalservice.global.exception.errorcode.AreaErrorCode;
 import com.doubleo.hospitalservice.global.exception.errorcode.BuildingErrorCode;
 import io.grpc.Status;
@@ -48,7 +48,8 @@ public class AreaGrpcServiceImpl extends AreaServiceGrpc.AreaServiceImplBase {
                         },
                         () -> {
                             responseObserver.onError(
-                                    new CommonException(AreaErrorCode.AREA_NOT_FOUND));
+                                    GrpcExceptionUtil.toStatusRuntimeException(
+                                            AreaErrorCode.AREA_NOT_FOUND));
                         });
     }
 
@@ -101,7 +102,8 @@ public class AreaGrpcServiceImpl extends AreaServiceGrpc.AreaServiceImplBase {
                     sb.append(building.get().getBuildingName());
                 } else {
                     responseObserver.onError(
-                            new CommonException(BuildingErrorCode.BUILDING_NOT_FOUND));
+                            GrpcExceptionUtil.toStatusRuntimeException(
+                                    BuildingErrorCode.BUILDING_NOT_FOUND));
                     return;
                 }
             } else if (i == 1) {
@@ -118,7 +120,9 @@ public class AreaGrpcServiceImpl extends AreaServiceGrpc.AreaServiceImplBase {
                 if (area.isPresent()) {
                     sb.append(area.get().getAreaName());
                 } else {
-                    responseObserver.onError(new CommonException(AreaErrorCode.AREA_NOT_FOUND));
+                    responseObserver.onError(
+                            GrpcExceptionUtil.toStatusRuntimeException(
+                                    AreaErrorCode.AREA_NOT_FOUND));
                     return;
                 }
             }
