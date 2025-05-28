@@ -1,7 +1,7 @@
 package com.doubleo.hospitalservice.domain.building.grpc.server;
 
 import com.doubleo.hospitalservice.domain.building.repository.BuildingRepository;
-import com.doubleo.hospitalservice.global.exception.CommonException;
+import com.doubleo.hospitalservice.global.exception.GrpcExceptionUtil;
 import com.doubleo.hospitalservice.global.exception.errorcode.BuildingErrorCode;
 import io.grpc.stub.StreamObserver;
 import net.devh.boot.grpc.server.service.GrpcService;
@@ -33,7 +33,8 @@ public class BuildingGrpcServiceImpl extends BuildingServiceGrpc.BuildingService
                         },
                         () -> {
                             responseObserver.onError(
-                                    new CommonException(BuildingErrorCode.BUILDING_NOT_FOUND));
+                                    GrpcExceptionUtil.toStatusRuntimeException(
+                                            BuildingErrorCode.BUILDING_NOT_FOUND));
                         });
     }
 }
