@@ -8,6 +8,8 @@ import com.doubleo.hospitalservice.global.config.util.TenantValidator;
 import jakarta.transaction.Transactional;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -27,5 +29,17 @@ public class BuildingServiceImpl implements BuildingService {
         List<Building> buildings = buildingRepository.findAllByTenantId(tenantId);
 
         return buildings.stream().map(BuildingInfoResponse::from).toList();
+    }
+
+    public Page<BuildingInfoResponse> getPagedBuildingsByTenantId(Pageable pageable) {
+        String tenantId = tenantValidator.getTenantId();
+        Page<Building> buildings = buildingRepository.findAllPagedByTenantId(tenantId, pageable);
+
+        return buildings.map(building ->
+                new BuildingInfoResponse(
+                        building.getBuildingId(),
+                        building.getBuildingCode(),
+                        building.getBuildingName()
+                ));
     }
 }
