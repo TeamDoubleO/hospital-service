@@ -28,7 +28,7 @@ public class BuildingController {
     @Operation(
             summary = "Get Paged Buildings by Hospital Tenant ID",
             description = "병원 테넌트 id를 기준으로 건물 리스트를 페이지네이션하여 조회하는 API")
-    public Page<BuildingInfoResponse> pagedBuildingsByTenantIdGet(Pageable pageable) {
-        return buildingService.getPagedBuildingsByTenantId(pageable);
+    public Page<BuildingInfoResponse> pagedBuildingsByTenantIdGet(Pageable pageable, @RequestParam(required = false) String keyword) {
+        return buildingService.getPagedBuildingsByTenantId(keyword, pageable);
     }
 }

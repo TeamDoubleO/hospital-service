@@ -13,7 +13,9 @@ import org.springframework.stereotype.Repository;
 public interface BuildingRepository extends JpaRepository<Building, Long> {
     List<Building> findAllByTenantId(String tenantId);
 
-    Page<Building> findAllPagedByTenantId(String tenantId, Pageable pageable);
+    Page<Building> findByTenantId(String tenantId, Pageable pageable);
+
+    Page<Building> findByTenantIdAndBuildingNameContainingIgnoreCase(String tenantId, String keyWord, Pageable pageable);
 
     Optional<Building> findByTenantIdAndBuildingCode(String tenantId, String buildingCode);
 }

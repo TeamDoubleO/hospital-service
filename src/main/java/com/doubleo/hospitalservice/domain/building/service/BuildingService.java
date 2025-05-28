@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface BuildingService {
     List<BuildingInfoResponse> getBuildingsByTenantId();
-    Page<BuildingInfoResponse> getPagedBuildingsByTenantId(Pageable pageable);
+    Page<BuildingInfoResponse> getPagedBuildingsByTenantId(String keyword, Pageable pageable);
 }
