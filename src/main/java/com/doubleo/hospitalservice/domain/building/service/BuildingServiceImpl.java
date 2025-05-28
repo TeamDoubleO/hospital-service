@@ -31,23 +31,24 @@ public class BuildingServiceImpl implements BuildingService {
         return buildings.stream().map(BuildingInfoResponse::from).toList();
     }
 
-    public Page<BuildingInfoResponse> getPagedBuildingsByTenantId(String keyword, Pageable pageable) {
+    public Page<BuildingInfoResponse> getPagedBuildingsByTenantId(
+            String keyword, Pageable pageable) {
         String tenantId = tenantValidator.getTenantId();
         Page<Building> buildings;
 
         if (keyword != null && !keyword.trim().isEmpty()) {
-            buildings = buildingRepository
-                    .findByTenantIdAndBuildingNameContainingIgnoreCase(tenantId, keyword, pageable);
+            buildings =
+                    buildingRepository.findByTenantIdAndBuildingNameContainingIgnoreCase(
+                            tenantId, keyword, pageable);
         } else {
-            buildings = buildingRepository
-                    .findByTenantId(tenantId, pageable);
+            buildings = buildingRepository.findByTenantId(tenantId, pageable);
         }
 
-        return buildings.map(building ->
-                new BuildingInfoResponse(
-                        building.getBuildingId(),
-                        building.getBuildingCode(),
-                        building.getBuildingName()
-                ));
+        return buildings.map(
+                building ->
+                        new BuildingInfoResponse(
+                                building.getBuildingId(),
+                                building.getBuildingCode(),
+                                building.getBuildingName()));
     }
 }
