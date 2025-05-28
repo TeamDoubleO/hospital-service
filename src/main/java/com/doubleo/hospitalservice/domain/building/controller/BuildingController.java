@@ -20,16 +20,16 @@ public class BuildingController {
     @Operation(
             summary = "Get Buildings by Hospital Tenant ID",
             description = "병원 테넌트 id를 기준으로 건물 리스트를 조회하는 API")
-    public List<BuildingInfoResponse> buildingsGetByTenantId() {
-        return buildingService.getBuildingsByTenantId();
+    public List<BuildingInfoResponse> buildingListGetByTenantId() {
+        return buildingService.getBuildingListByTenantId();
     }
 
     @GetMapping("/paged")
     @Operation(
             summary = "Get Paged Buildings by Hospital Tenant ID",
             description = "병원 테넌트 id를 기준으로 건물 리스트를 페이지네이션하여 조회하는 API")
-    public Page<BuildingInfoResponse> pagedBuildingsByTenantIdGet(
+    public Page<BuildingInfoResponse> pagedBuildingListByTenantIdGet(
             Pageable pageable, @RequestParam(required = false) String keyword) {
-        return buildingService.getPagedBuildingsByTenantId(keyword, pageable);
+        return buildingService.getPagedBuildingListByTenantId(keyword, pageable);
     }
 }

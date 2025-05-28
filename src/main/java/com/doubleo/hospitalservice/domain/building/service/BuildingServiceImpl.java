@@ -22,7 +22,7 @@ public class BuildingServiceImpl implements BuildingService {
 
     // tenantId를 기반으로 소속 건물 리스트 조회
     @Override
-    public List<BuildingInfoResponse> getBuildingsByTenantId() {
+    public List<BuildingInfoResponse> getBuildingListByTenantId() {
 
         String tenantId = tenantValidator.getTenantId();
 
@@ -31,7 +31,7 @@ public class BuildingServiceImpl implements BuildingService {
         return buildings.stream().map(BuildingInfoResponse::from).toList();
     }
 
-    public Page<BuildingInfoResponse> getPagedBuildingsByTenantId(
+    public Page<BuildingInfoResponse> getPagedBuildingListByTenantId(
             String keyword, Pageable pageable) {
         String tenantId = tenantValidator.getTenantId();
         Page<Building> buildings;
@@ -48,7 +48,7 @@ public class BuildingServiceImpl implements BuildingService {
                 building ->
                         new BuildingInfoResponse(
                                 building.getBuildingId(),
-                                building.getBuildingCode(),
-                                building.getBuildingName()));
+                                building.getBuildingName(),
+                                building.getBuildingCode()));
     }
 }
