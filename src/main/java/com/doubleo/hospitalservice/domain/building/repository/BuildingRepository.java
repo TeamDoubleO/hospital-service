@@ -18,4 +18,6 @@ public interface BuildingRepository extends JpaRepository<Building, Long> {
             String tenantId, String keyWord, Pageable pageable);
 
     Optional<Building> findByTenantIdAndBuildingCode(String tenantId, String buildingCode);
+
+    boolean existsByTenantIdAndBuildingId(String tenantId, Long buildingId);
 }
